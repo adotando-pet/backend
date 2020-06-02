@@ -1,18 +1,23 @@
 # Check out https://hub.docker.com/_/node to select a new base image
 FROM node:10-slim
 
+LABEL version="1.0.0" description="pet-backend"
+
 # Set to a non-root built-in user `node`
 USER node
 
 # Create app directory (with user `node`)
-RUN mkdir -p /home/node/app
-
-WORKDIR /home/node/app
+RUN mkdir -p /home/node/backend
+RUN chmod -R 777 /home/node/backend
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 # where available (npm@5+)
 COPY --chown=node package*.json ./
+
+VOLUME /home/backend
+
+WORKDIR /home/node/backend
 
 RUN npm install
 
