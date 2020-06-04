@@ -1,10 +1,11 @@
-import {Entity, model, property, hasMany, belongsTo} from '@loopback/repository';
-import {Phone} from './phone.model';
+import {belongsTo, Entity, hasMany, model, property} from '@loopback/repository';
+import {v4 as uuid} from 'uuid';
 import {Address} from './address.model';
-import {Pet} from './pet.model';
-import {File} from './file.model';
 import {Advertisement} from './advertisement.model';
+import {File} from './file.model';
 import {Interested} from './interested.model';
+import {Pet} from './pet.model';
+import {Phone} from './phone.model';
 
 @model({settings: {strict: false}})
 export class User extends Entity {
@@ -13,6 +14,7 @@ export class User extends Entity {
     id: true,
     generated: false,
     required: true,
+    default: () => uuid(),
   })
   id: string;
 

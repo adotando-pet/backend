@@ -1,7 +1,8 @@
-import {Entity, model, property, belongsTo, hasMany} from '@loopback/repository';
-import {Pet} from './pet.model';
+import {belongsTo, Entity, hasMany, model, property} from '@loopback/repository';
+import {v4 as uuid} from 'uuid';
 import {Address} from './address.model';
 import {Interested} from './interested.model';
+import {Pet} from './pet.model';
 
 @model({settings: {strict: false}})
 export class Advertisement extends Entity {
@@ -10,6 +11,7 @@ export class Advertisement extends Entity {
     id: true,
     generated: false,
     required: true,
+    default: () => uuid(),
   })
   id: string;
 
