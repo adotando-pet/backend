@@ -1,4 +1,5 @@
 import {Entity, model, property} from '@loopback/repository';
+import {v4 as uuid} from 'uuid';
 
 @model({settings: {strict: false}})
 export class LiveWell extends Entity {
@@ -7,6 +8,7 @@ export class LiveWell extends Entity {
     id: true,
     generated: false,
     required: true,
+    default: () => uuid(),
   })
   id: string;
 

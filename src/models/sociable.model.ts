@@ -1,4 +1,5 @@
 import {Entity, model, property} from '@loopback/repository';
+import {v4 as uuid} from 'uuid';
 
 @model({settings: {strict: false}})
 export class Sociable extends Entity {
@@ -7,6 +8,7 @@ export class Sociable extends Entity {
     id: true,
     generated: false,
     required: true,
+    default: () => uuid(),
   })
   id: string;
 
